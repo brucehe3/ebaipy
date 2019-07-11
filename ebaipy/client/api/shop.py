@@ -70,3 +70,94 @@ class EbaiShop(BaseEbaiApi):
         :return:
         """
         pass
+
+    def get_announcement(self):
+        """
+        获取商户公告
+        :return:
+        """
+        pass
+
+    def set_announcement(self):
+        """
+        设置商户公告
+        :return:
+        """
+        pass
+
+    def get_aptitude(self):
+        """
+        获取商户资质
+        :return:
+        """
+        pass
+
+    def get_apitude_types(self):
+        """
+        获取全部资质类型
+        :return:
+        """
+        pass
+
+    def upload_aptitude(self):
+        """
+        上传资质
+        :return:
+        """
+        pass
+
+    def close(self):
+        """
+        商户歇业
+        :return:
+        """
+        pass
+
+    def batchupdate_id(self):
+        """
+        商户三方门店ID映射
+        :return:
+        """
+        pass
+
+    def push_msg(self):
+        """
+        门店状态变更消息通知
+        :return:
+        """
+        pass
+
+    def offline(self):
+        """
+        下线商户
+        :return:
+        """
+        pass
+
+    def open(self):
+        """
+        商户开业
+        :return:
+        """
+        pass
+
+    def get_status(self):
+        """
+        查看商户状态
+        :return:
+        """
+        pass
+
+    def unbind_msg(self):
+        """
+        门店解绑消息推送
+        :return:
+        """
+        pass
+
+    def update(self):
+        """
+        修改商户
+        :return:
+        """
+        pass

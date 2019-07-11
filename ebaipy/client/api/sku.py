@@ -40,12 +40,20 @@ class EbaiSku(BaseEbaiApi):
         :return:
         """
 
-    def list(self):
+    def list(self, shop_id, **kwargs):
         """
         商品列表
         :return:
         """
-        pass
+        cmd = 'sku.list'
+
+        body = {'shop_id': shop_id}
+
+        body.update(kwargs)
+
+        return self._post(cmd, **{
+            'body': body
+        })
 
     def offline(self):
         """

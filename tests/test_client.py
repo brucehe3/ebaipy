@@ -27,3 +27,10 @@ class EbaiClientTestCase(unittest.TestCase):
     def test_shop_create(self):
 
         pass
+
+    def test_sku_list(self):
+
+        res = self.client.sku.list(1096, sku_id='1537513092827702')
+
+        print(res)
+        self.assertEqual(res['errno'], 0)

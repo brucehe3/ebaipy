@@ -7,6 +7,7 @@ import json
 import inspect
 
 from ebaipy.client.api.base import BaseEbaiApi
+from ebaipy.exceptions import EbaiClientException
 
 
 def _is_api_endpoint(obj):
@@ -42,6 +43,7 @@ class BaseEbaiClient(object):
 
         cmd = kwargs.pop('cmd')
         body = kwargs.pop('body', {})
+        result_processor = kwargs.pop('result_processor', None)
 
         body = self.request_body(cmd, body)
 
@@ -55,14 +57,49 @@ class BaseEbaiClient(object):
         try:
             res.raise_for_status()
         except requests.RequestException as reqe:
-            pass
+            raise EbaiClientException(
+                errno=None,
+                errmsg=None,
+                client=self,
+                request=reqe.request,
+                response=reqe.response
+            )
 
         return self._handle_result(
-            res, method, **kwargs
+            res, method, result_processor, **kwargs
         )
 
-    def _handle_result(self, res, method=None, **kwargs):
-        return res
+    def _handle_result(self, res, method=None, result_processor=None, **kwargs):
+
+        try:
+            result = res.json()
+        except (TypeError, ValueError):
+            result = res
+
+        if not isinstance(result, dict):
+            return result
+
+        result = result.get('body')
+
+        if not isinstance(result, dict):
+            return result
+
+        if 'errno' in result:
+            result['errno'] = int(result['errno'])
+
+        if 'errno' in result and result['errno'] != 0:
+            errno = result['errno']
+            errmsg = result.get('error', errno)
+
+            raise EbaiClientException(
+                errno,
+                errmsg,
+                client=self,
+                request=res.request,
+                response=res
+            )
+
+        return result if not result_processor else result_processor(result)
 
     def _md5(self, raw_data):
 

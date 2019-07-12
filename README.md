@@ -5,6 +5,7 @@
 
 Author: Bruce He <bruce@shbewell.com>
 
+version: `0.1`
 
 # 功能特性
 

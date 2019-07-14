@@ -35,7 +35,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='ebaipy',
-    version='0.2.1',
+    version='0.3',
     author='Bruce He',
     author_email='bruce@shbewell.com',
     url='https://github.com/brucehe3/ebaipy',

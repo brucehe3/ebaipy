@@ -17,6 +17,8 @@ Author: Bruce He <bruce@shbewell.com>
 
 version: `0.5`
 
+[[饿百零售官方API文档]](https://open-be.ele.me/dev/api/doc/v3/)
+
 # 功能特性
 
 已接入饿百零售所有下行接口，包括：

@@ -44,7 +44,22 @@ pip install -U ebaipy
 
 # 使用示例
 
-`TODO`
+```python
+
+from ebaipy import EbaiClient
+
+# 初始化客户端类
+source = 111111
+secret = 'my_secret'
+client = EbaiClient(source, secret)
+
+# 获取sku列表
+client.sku.list(shop_id=10001)
+
+# 获取订单列表
+client.order.list(shop_id=10001)
+
+```
 
 # 问题反馈
 

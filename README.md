@@ -15,7 +15,6 @@
 
 Author: Bruce He <bruce@shbewell.com>
 
-version: `0.5`
 
 [[饿百零售官方API文档]](https://open-be.ele.me/dev/api/doc/v3/)
 
